@@ -3,11 +3,7 @@ package com.sgh.gestiondestock.model;
 import java.math.BigDecimal;
 import java.time.Instant;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,40 +25,18 @@ public class Mvtstock extends AbstractEntity{
 	  @ManyToOne
 	  @JoinColumn(name = "idarticle")
 	  private Article article;
-	  
+
+	@Column(name = "typemvt")
+	@Enumerated(EnumType.STRING)
+	private TypeMvtstock typeMvt;
+
+	@Column(name = "sourcemvt")
+	@Enumerated(EnumType.STRING)
+	private SrcMvtStock sourceMvt;
+
 	  @Column(name = "identreprise")
 	  private Integer idEntreprise;
 
-	public Instant getDateMvt() {
-		return dateMvt;
-	}
 
-	public void setDateMvt(Instant dateMvt) {
-		this.dateMvt = dateMvt;
-	}
-
-	public BigDecimal getQuantite() {
-		return quantite;
-	}
-
-	public void setQuantite(BigDecimal quantite) {
-		this.quantite = quantite;
-	}
-
-	public Article getArticle() {
-		return article;
-	}
-
-	public void setArticle(Article article) {
-		this.article = article;
-	}
-
-	public Integer getIdEntreprise() {
-		return idEntreprise;
-	}
-
-	public void setIdEntreprise(Integer idEntreprise) {
-		this.idEntreprise = idEntreprise;
-	}
 	  
 }

@@ -3,12 +3,7 @@ package com.sgh.gestiondestock.model;
 import java.time.Instant;
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -30,7 +25,11 @@ public class CommandeClient extends AbstractEntity{
 
 	  @OneToMany(mappedBy = "commandeClient")
 	  private List<ligneCommandeClient> ligneCommandeClients;
-	  
+
+	@Column(name = "etatcommande")
+	@Enumerated(EnumType.STRING)
+	private EtatCommande etatCommande;
+
 	  @ManyToOne
 	  @JoinColumn(name = "idclient")
 	  private Client client;
@@ -38,44 +37,6 @@ public class CommandeClient extends AbstractEntity{
 	  @Column(name = "identreprise")
 	  private Integer idEntreprise;
 
-	public String getCode() {
-		return code;
-	}
 
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public Instant getDateCommande() {
-		return dateCommande;
-	}
-
-	public void setDateCommande(Instant dateCommande) {
-		this.dateCommande = dateCommande;
-	}
-
-	public List<ligneCommandeClient> getLigneCommandeClients() {
-		return ligneCommandeClients;
-	}
-
-	public void setLigneCommandeClients(List<ligneCommandeClient> ligneCommandeClients) {
-		this.ligneCommandeClients = ligneCommandeClients;
-	}
-
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	public Integer getIdEntreprise() {
-		return idEntreprise;
-	}
-
-	public void setIdEntreprise(Integer idEntreprise) {
-		this.idEntreprise = idEntreprise;
-	}
 
 }

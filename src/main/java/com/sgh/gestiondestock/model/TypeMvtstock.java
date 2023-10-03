@@ -1,5 +1,6 @@
 package com.sgh.gestiondestock.model;
 
-public class TypeMvtstock {
+public enum TypeMvtstock {
+    ENTREE, SORTIE, CORRECTION_POS, CORRECTION_NEG
 	
 }

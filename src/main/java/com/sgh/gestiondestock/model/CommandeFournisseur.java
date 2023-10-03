@@ -3,12 +3,7 @@ package com.sgh.gestiondestock.model;
 import java.time.Instant;
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,7 +24,9 @@ public class CommandeFournisseur extends AbstractEntity {
 	  @Column(name = "datecommande")
 	  private Instant dateCommande;
 
-
+	@Column(name = "etatcommande")
+	@Enumerated(EnumType.STRING)
+	private EtatCommande etatCommande;
 
 	  @Column(name = "identreprise")
 	  private Integer idEntreprise;
